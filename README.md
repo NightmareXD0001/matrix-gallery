@@ -1,73 +1,65 @@
-# Welcome to your Lovable project
+# 📸 Matrix Gallery
 
-## Project info
+**Matrix Gallery** is the official photo archive for the **Bro. Aloysius Matrix Ecomm Psynapse Symposium**, an annual event hosted by our school’s flagship clubs:  
+🎯 **The Matrix Clan** · 📈 **Ecom Buzz** · 🧠 **Psynapse**
 
-**URL**: https://lovable.dev/projects/020f485d-7d65-4aa6-b72b-6f8f33027f36
+This web app beautifully captures and presents the moments from the symposium, including competitions, workshops, guest talks, and club showcases.
 
-## How can I edit this code?
+## 🏫 About the Event
 
-There are several ways of editing your application.
+The **Bro. Aloysius Matrix Ecomm Psynapse Symposium** is a vibrant celebration of tech, economics, and psychology, organized by our school clubs. The event brings together innovation, intellect, and creativity — and Matrix Gallery ensures those memories are never lost.
 
-**Use Lovable**
+## ✨ Features
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/020f485d-7d65-4aa6-b72b-6f8f33027f36) and start prompting.
+- 📷 **-Image Galleries**
+- 🎨 **Matrix-Inspired Theme**
+- 📱 **Responsive Design**
+- 💨 **Fast Browsing Experience**
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🛠️ Tech Stack
 
-**Use your preferred IDE**
+- **Frontend**: Vite + React 
+- **Styling**: Tailwind CSS
+- **Hosting**: GitHub Pages
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 🚀 Getting Started
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
+git clone https://github.com/The-Matrix-Clan/matrix-gallery.git
+cd matrix-gallery
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## 📂 Project Structure
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```
+matrix-gallery/
+├── public/
+├── src/
+│   ├── assets/            # Images and icons
+│   ├── components/        # UI elements
+│   ├── data/              # Image and club data
+│   ├── pages/             # Gallery views
+│   └── App.jsx
+└── vite.config.js
+```
 
-**Use GitHub Codespaces**
+## 🖼️ Sneak Peek
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+_Add screenshots or preview images of the gallery interface here._
 
-## What technologies are used for this project?
+## 🧠 Clubs Behind the Event
 
-This project is built with:
+- **The Matrix Clan** – Tech & Innovation
+- **Ecom Buzz** – Economics & Business
+- **Psynapse** – Psychology & Humanities
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 🙌 Contributions
 
-## How can I deploy this project?
+Have photos or media from the event? Want to improve the gallery?  
+Feel free to fork the repo and submit a pull request, or open an issue!
 
-Simply open [Lovable](https://lovable.dev/projects/020f485d-7d65-4aa6-b72b-6f8f33027f36) and click on Share -> Publish.
+## 📄 License
 
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+MIT License
