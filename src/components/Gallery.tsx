@@ -7,59 +7,59 @@ import ImageViewerDialog from "./ImageViewerDialog";
 const galleryItems = [
   { 
     id: 1, 
-    src: 'https://images.unsplash.com/photo-1518770660439-4636190af475', 
-    alt: 'Circuit board closeup', 
-    title: 'Neural Interface v3.2', 
-    category: 'Technology' 
+    src: 'https://i.ibb.co/wrFXvhhZ/gallery8.jpg', 
+    alt: 'gallery-1', 
+    title: 'Team', 
+    category: '1' 
   },
   { 
     id: 2, 
-    src: 'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7', 
-    alt: 'Code on screen', 
-    title: 'Source Code: Matrix', 
-    category: 'Code' 
+    src: 'https://i.ibb.co/1GccVLKN/gallery9.jpg', 
+    alt: 'gallery-2', 
+    title: 'Team', 
+    category: '2' 
   },
   { 
     id: 3, 
-    src: 'https://images.unsplash.com/photo-1605810230434-7631ac76ec81', 
-    alt: 'Display screens', 
-    title: 'Sentinel Monitoring', 
-    category: 'Security' 
+    src: 'https://i.ibb.co/XfmCsyL0/gallery7.jpg', 
+    alt: 'gallery-3', 
+    title: 'Prizes', 
+    category: '3' 
   },
   { 
     id: 4, 
-    src: 'https://images.unsplash.com/photo-1439337153520-7082a56a81f4', 
-    alt: 'Glass roof architecture', 
-    title: 'Construct Framework', 
-    category: 'Architecture' 
+    src: 'https://i.ibb.co/DPP7r9S7/gallery6.jpg', 
+    alt: 'gallery-4', 
+    title: 'Chief Guest', 
+    category: '4' 
   },
   { 
     id: 5, 
-    src: 'https://images.unsplash.com/photo-1494891848038-7bd202a2afeb', 
-    alt: 'Black and red building', 
-    title: 'Training Facility', 
-    category: 'Locations' 
+    src: 'https://i.ibb.co/SDjkCgvb/gallery1.jpg', 
+    alt: 'gallery-5', 
+    title: 'Lamp Lighting', 
+    category: '5' 
   },
   { 
     id: 6, 
-    src: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31', 
-    alt: 'Futuristic circuit', 
-    title: 'Mainframe Access', 
-    category: 'Technology' 
+    src: 'https://i.ibb.co/rK25qxnT/gallery2.jpg', 
+    alt: 'gallery-6', 
+    title: 'President\' Address', 
+    category: '6' 
   },
   { 
     id: 7, 
-    src: 'https://images.unsplash.com/photo-1639322537228-f710d846310a', 
-    alt: 'Digital art', 
-    title: 'Simulation Data', 
-    category: 'Virtual' 
+    src: 'https://i.ibb.co/yGSwmsb/gallery5.jpg', 
+    alt: 'gallery-7', 
+    title: 'Music', 
+    category: '7' 
   },
   { 
     id: 8, 
-    src: 'https://images.unsplash.com/photo-1629757509637-7c99379d5d47', 
-    alt: 'Abstract lights', 
-    title: 'Data Streams', 
-    category: 'Abstract' 
+    src: 'https://i.ibb.co/TBgT1TSV/gallery4.jpg', 
+    alt: 'gallery-8', 
+    title: 'Decoration', 
+    category: '8' 
   }
 ];
 

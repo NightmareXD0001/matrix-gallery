@@ -28,7 +28,7 @@ const Header: React.FC = () => {
                 <ImageIcon size={32} className="text-matrix-green" />
               </span>
               <span className="relative">
-                <span className="text-matrix-green">THE</span> MATRIX <span className="text-matrix-green">CLAN</span>
+                <span className="text-matrix-green">MATRIX</span> ECOMM <span className="text-matrix-green">PSYNAPSE</span>
               </span>
             </h1>
             {glitchActive && (
@@ -40,7 +40,7 @@ const Header: React.FC = () => {
                   <span className="mr-2 block transform -rotate-45">
                     <ImageIcon size={32} />
                   </span>
-                  <span>THE MATRIX CLAN</span>
+                  <span>MATRIX ECOMM PSYNAPSE</span>
                 </h1>
                 <h1
                   className="font-matrix text-3xl md:text-4xl font-bold text-blue-500/30
@@ -49,15 +49,16 @@ const Header: React.FC = () => {
                   <span className="mr-2 block transform -rotate-45">
                     <ImageIcon size={32} />
                   </span>
-                  <span>THE MATRIX CLAN</span>
+                  <span>MATRIX ECOMM PSYNAPSE</span>
                 </h1>
               </>
             )}
           </div>
           <div className="hidden md:block h-8 w-[1px] bg-matrix-green mx-4 animate-pulse"></div>
           <p className="hidden md:block text-sm text-matrix-green/80 font-light tracking-wider">
-            ACCESS LEVEL: SENTINEL
+            ACCESS LEVEL: User
           </p>
+          <a href="https://thematrixclan.com" className="hidden md:block text-sm text-matrix-green/80 font-light tracking-wider">Home</a>
         </div>
         {/* Navigation removed: no pointless/fun or search buttons */}
       </div>
