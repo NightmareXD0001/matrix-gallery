@@ -56,9 +56,10 @@ const Header: React.FC = () => {
           </div>
           <div className="hidden md:block h-8 w-[1px] bg-matrix-green mx-4 animate-pulse"></div>
           <p className="hidden md:block text-sm text-matrix-green/80 font-light tracking-wider">
-            ACCESS LEVEL: User
+            Access Level: User
           </p>
-          <a href="https://thematrixclan.com" className="hidden md:block text-sm text-matrix-green/80 font-light tracking-wider">                                Home</a>
+          <div className="hidden md:block h-8 w-[1px] bg-matrix-green mx-4 animate-pulse"></div>
+          <a href="https://thematrixclan.com" className="hidden md:block text-sm text-matrix-green/80 font-light tracking-wider">HOME</a>
         </div>
         {/* Navigation removed: no pointless/fun or search buttons */}
       </div>
