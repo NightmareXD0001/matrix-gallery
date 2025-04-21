@@ -1,6 +1,7 @@
 
-import React, { useState, useEffect } from 'react';
-import ImageCard from './ImageCard';
+import React, { useState, useEffect } from "react";
+import ImageCard from "./ImageCard";
+import ImageViewerDialog from "./ImageViewerDialog";
 
 // Sample gallery data
 const galleryItems = [
@@ -65,42 +66,55 @@ const galleryItems = [
 const Gallery: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [items, setItems] = useState<typeof galleryItems>([]);
-  
+  const [viewerOpen, setViewerOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<typeof galleryItems[0] | null>(null);
+
   // Simulate loading data
   useEffect(() => {
     const timer = setTimeout(() => {
       setItems(galleryItems);
       setLoading(false);
     }, 1000);
-    
+
     return () => clearTimeout(timer);
   }, []);
+
+  const handleEnlarge = (img: typeof galleryItems[0]) => {
+    setSelectedImage(img);
+    setViewerOpen(true);
+  };
+
+  const handleClose = () => {
+    setViewerOpen(false);
+    setSelectedImage(null);
+  };
 
   if (loading) {
     return (
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {Array.from({ length: 8 }).map((_, i) => (
-          <div 
-            key={i}
-            className="glass-panel h-64 animate-pulse bg-matrix-black/50"
-          ></div>
+          <div key={i} className="glass-panel h-64 animate-pulse bg-matrix-black/50"></div>
         ))}
       </div>
     );
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-      {items.map((item) => (
-        <ImageCard 
-          key={item.id}
-          src={item.src}
-          alt={item.alt}
-          title={item.title}
-          category={item.category}
-        />
-      ))}
-    </div>
+    <>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {items.map((item) => (
+          <ImageCard
+            key={item.id}
+            src={item.src}
+            alt={item.alt}
+            title={item.title}
+            category={item.category}
+            onEnlarge={() => handleEnlarge(item)}
+          />
+        ))}
+      </div>
+      <ImageViewerDialog image={selectedImage} open={viewerOpen} onClose={handleClose} />
+    </>
   );
 };
 

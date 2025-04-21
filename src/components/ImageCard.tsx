@@ -1,17 +1,18 @@
 
-import React, { useState } from 'react';
-import { Maximize, Plus } from 'lucide-react';
+import React from 'react';
+import { Maximize } from 'lucide-react';
 
 interface ImageCardProps {
   src: string;
   alt: string;
   title: string;
   category?: string;
+  onEnlarge?: () => void;
 }
 
-const ImageCard: React.FC<ImageCardProps> = ({ src, alt, title, category }) => {
-  const [isHovering, setIsHovering] = useState(false);
-  
+const ImageCard: React.FC<ImageCardProps> = ({ src, alt, title, category, onEnlarge }) => {
+  const [isHovering, setIsHovering] = React.useState(false);
+
   return (
     <div 
       className="glass-panel image-frame overflow-hidden transition-all duration-500 
@@ -35,18 +36,15 @@ const ImageCard: React.FC<ImageCardProps> = ({ src, alt, title, category }) => {
                     flex flex-col justify-end p-3 transition-opacity duration-300
                     ${isHovering ? 'opacity-100' : 'opacity-0'}`}
         >
-          {/* Action buttons */}
+          {/* Only enlarge button kept */}
           <div className="flex justify-end space-x-2 mb-2">
-            <button className="p-2 rounded-full bg-matrix-black/80 
-                              border border-matrix-green/50 text-matrix-green
-                              hover:bg-matrix-green hover:text-matrix-black
-                              transition-colors duration-300">
-              <Plus size={16} />
-            </button>
-            <button className="p-2 rounded-full bg-matrix-black/80 
-                              border border-matrix-green/50 text-matrix-green
-                              hover:bg-matrix-green hover:text-matrix-black
-                              transition-colors duration-300">
+            <button
+              className="p-2 rounded-full bg-matrix-black/80 border border-matrix-green/50 text-matrix-green
+                         hover:bg-matrix-green hover:text-matrix-black transition-colors duration-300"
+              onClick={onEnlarge}
+              aria-label="Enlarge image"
+              type="button"
+            >
               <Maximize size={16} />
             </button>
           </div>

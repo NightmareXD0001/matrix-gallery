@@ -2,7 +2,7 @@
 import React from 'react';
 import ParticleBackground from '@/components/ParticleBackground';
 import Header from '@/components/Header';
-import SearchFilter from '@/components/SearchFilter';
+// Removed: import SearchFilter from '@/components/SearchFilter';
 import Gallery from '@/components/Gallery';
 
 const Index: React.FC = () => {
@@ -17,10 +17,7 @@ const Index: React.FC = () => {
         <Header />
         
         <main>
-          {/* Search and filter controls */}
-          <SearchFilter />
-          
-          {/* Gallery grid */}
+          {/* Removed search and filter controls */}
           <Gallery />
           
           {/* Status indicator - like a system uptime or connection status */}
