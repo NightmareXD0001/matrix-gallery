@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Search, Gallery } from 'lucide-react';
+import { Search, ImageIcon } from 'lucide-react';
 
 const Header: React.FC = () => {
   const [glitchActive, setGlitchActive] = useState(false);
@@ -27,7 +27,7 @@ const Header: React.FC = () => {
                          flex items-center`}
             >
               <span className="mr-2 block transform -rotate-45">
-                <Gallery size={32} className="text-matrix-green" />
+                <ImageIcon size={32} className="text-matrix-green" />
               </span>
               <span className="relative">
                 <span className="text-matrix-green">THE</span> MATRIX <span className="text-matrix-green">CLAN</span>
@@ -42,7 +42,7 @@ const Header: React.FC = () => {
                             absolute top-0 left-0 transform translate-x-[2px] translate-y-[-2px]"
                 >
                   <span className="mr-2 block transform -rotate-45">
-                    <Gallery size={32} />
+                    <ImageIcon size={32} />
                   </span>
                   <span>THE MATRIX CLAN</span>
                 </h1>
@@ -51,7 +51,7 @@ const Header: React.FC = () => {
                             absolute top-0 left-0 transform translate-x-[-2px] translate-y-[2px]"
                 >
                   <span className="mr-2 block transform -rotate-45">
-                    <Gallery size={32} />
+                    <ImageIcon size={32} />
                   </span>
                   <span>THE MATRIX CLAN</span>
                 </h1>
