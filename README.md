@@ -45,10 +45,6 @@ matrix-gallery/
 └── vite.config.js
 ```
 
-## 🖼️ Sneak Peek
-
-_Add screenshots or preview images of the gallery interface here._
-
 ## 🧠 Clubs Behind the Event
 
 - **The Matrix Clan** – Tech & Innovation
