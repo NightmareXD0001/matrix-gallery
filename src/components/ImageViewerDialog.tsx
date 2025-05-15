@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { X, ZoomIn, ZoomOut, RotateCw, Download, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -27,11 +27,28 @@ const ImageViewerDialog: React.FC<ImageViewerDialogProps> = ({
 }) => {
   const [scale, setScale] = useState(1);
   const [rotation, setRotation] = useState(0);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+  const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
+  const imageRef = useRef<HTMLImageElement>(null);
+
+  React.useEffect(() => {
+    if (image && open) {
+      // Find current image index when dialog opens or image changes
+      const index = allImages.findIndex(img => img?.id === image.id);
+      if (index !== -1) {
+        setCurrentImageIndex(index);
+      }
+      
+      // Reset transformations when changing images
+      setScale(1);
+      setRotation(0);
+      setPosition({ x: 0, y: 0 });
+    }
+  }, [image, open, allImages]);
 
   if (!image) return null;
-
-  // Find current image index
-  const currentIndex = allImages.findIndex(img => img?.id === image.id);
   
   const handleZoomIn = () => {
     setScale(prev => Math.min(prev + 0.25, 3));
@@ -55,28 +72,56 @@ const ImageViewerDialog: React.FC<ImageViewerDialogProps> = ({
   };
   
   const handlePrevImage = () => {
-    if (currentIndex > 0) {
-      const newIndex = currentIndex - 1;
-      const prevImage = allImages[newIndex];
-      if (prevImage) {
-        // Reset zoom and rotation when changing images
-        setScale(1);
-        setRotation(0);
-      }
+    if (currentImageIndex > 0) {
+      const newIndex = currentImageIndex - 1;
+      // Reset transformations
+      setScale(1);
+      setRotation(0);
+      setPosition({ x: 0, y: 0 });
+      setCurrentImageIndex(newIndex);
     }
   };
   
   const handleNextImage = () => {
-    if (currentIndex < allImages.length - 1) {
-      const newIndex = currentIndex + 1;
-      const nextImage = allImages[newIndex];
-      if (nextImage) {
-        // Reset zoom and rotation when changing images
-        setScale(1);
-        setRotation(0);
-      }
+    if (currentImageIndex < allImages.length - 1) {
+      const newIndex = currentImageIndex + 1;
+      // Reset transformations
+      setScale(1);
+      setRotation(0);
+      setPosition({ x: 0, y: 0 });
+      setCurrentImageIndex(newIndex);
     }
   };
+
+  // Mouse event handlers for dragging
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (scale > 1) {  // Only enable dragging when zoomed in
+      setIsDragging(true);
+      setDragStart({ x: e.clientX - position.x, y: e.clientY - position.y });
+    }
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (isDragging && scale > 1) {
+      setPosition({
+        x: e.clientX - dragStart.x,
+        y: e.clientY - dragStart.y
+      });
+    }
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  // Prevent context menu
+  const handleContextMenu = (e: React.MouseEvent) => {
+    e.preventDefault();
+    return false;
+  };
+
+  // Get the current displayed image
+  const currentImage = allImages[currentImageIndex] || image;
 
   return (
     <Dialog open={open} onOpenChange={(val) => !val && onClose()}>
@@ -88,10 +133,10 @@ const ImageViewerDialog: React.FC<ImageViewerDialogProps> = ({
           {/* Image viewer header */}
           <div className="flex justify-between items-center p-3 border-b border-matrix-green/30">
             <div className="flex items-center gap-2">
-              <span className="font-matrix text-lg text-matrix-green">{image.title}</span>
-              {image.category && (
+              <span className="font-matrix text-lg text-matrix-green">{currentImage.title}</span>
+              {currentImage.category && (
                 <span className="text-xs px-2 py-1 bg-matrix-green/10 text-matrix-green rounded">
-                  {image.category}
+                  {currentImage.category}
                 </span>
               )}
             </div>
@@ -106,9 +151,15 @@ const ImageViewerDialog: React.FC<ImageViewerDialogProps> = ({
           </div>
           
           {/* Image container */}
-          <div className="relative overflow-hidden bg-black/90 flex justify-center items-center" style={{ height: "calc(80vh - 110px)" }}>
+          <div 
+            className="relative overflow-hidden bg-black/90 flex justify-center items-center" 
+            style={{ height: "calc(80vh - 110px)" }}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseUp}
+          >
             {/* Navigation arrows */}
-            {currentIndex > 0 && (
+            {currentImageIndex > 0 && (
               <button 
                 className="absolute left-2 z-10 p-1.5 rounded-full bg-matrix-black/50 border border-matrix-green/30 text-matrix-green hover:bg-matrix-green hover:text-matrix-black transition-colors"
                 onClick={handlePrevImage}
@@ -119,17 +170,21 @@ const ImageViewerDialog: React.FC<ImageViewerDialogProps> = ({
             )}
             
             <img
-              src={image.src}
-              alt={image.alt}
+              ref={imageRef}
+              src={currentImage.src}
+              alt={currentImage.alt}
               className="max-h-full max-w-full object-contain transition-all duration-300"
               style={{
-                transform: `scale(${scale}) rotate(${rotation}deg)`,
-                transition: "transform 0.3s ease"
+                transform: `translate(${position.x}px, ${position.y}px) scale(${scale}) rotate(${rotation}deg)`,
+                transition: isDragging ? "none" : "transform 0.3s ease",
+                cursor: scale > 1 ? (isDragging ? "grabbing" : "grab") : "default"
               }}
               draggable={false}
+              onMouseDown={handleMouseDown}
+              onContextMenu={handleContextMenu}
             />
             
-            {currentIndex < allImages.length - 1 && (
+            {currentImageIndex < allImages.length - 1 && (
               <button 
                 className="absolute right-2 z-10 p-1.5 rounded-full bg-matrix-black/50 border border-matrix-green/30 text-matrix-green hover:bg-matrix-green hover:text-matrix-black transition-colors"
                 onClick={handleNextImage}
@@ -178,7 +233,7 @@ const ImageViewerDialog: React.FC<ImageViewerDialogProps> = ({
           
           {/* Image counter */}
           <div className="absolute bottom-16 right-3 px-2 py-1 bg-matrix-black/80 border border-matrix-green/30 rounded text-xs text-matrix-green">
-            {currentIndex + 1} / {allImages.length}
+            {currentImageIndex + 1} / {allImages.length}
           </div>
         </div>
       </DialogContent>
