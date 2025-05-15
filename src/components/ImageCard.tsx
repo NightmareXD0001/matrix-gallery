@@ -16,8 +16,7 @@ const ImageCard: React.FC<ImageCardProps> = ({ src, alt, title, category, onEnla
   return (
     <div 
       className="glass-panel image-frame overflow-hidden transition-all duration-500 
-                transform hover:scale-[1.02] group animate-float"
-      style={{ animationDelay: `${Math.random() * 2}s` }}
+                transform hover:scale-[1.02] group"
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >

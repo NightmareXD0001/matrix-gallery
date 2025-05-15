@@ -86,7 +86,9 @@ const Gallery: React.FC = () => {
 
   const handleClose = () => {
     setViewerOpen(false);
-    setSelectedImage(null);
+    setTimeout(() => {
+      setSelectedImage(null);
+    }, 300); // Wait for animation to complete
   };
 
   if (loading) {
@@ -113,7 +115,12 @@ const Gallery: React.FC = () => {
           />
         ))}
       </div>
-      <ImageViewerDialog image={selectedImage} open={viewerOpen} onClose={handleClose} />
+      <ImageViewerDialog 
+        image={selectedImage} 
+        open={viewerOpen} 
+        onClose={handleClose}
+        allImages={items}
+      />
     </>
   );
 };
