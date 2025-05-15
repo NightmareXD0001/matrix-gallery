@@ -107,7 +107,7 @@ const NotFound = () => {
             onClick={() => window.location.href = "https://thematrixclan.com"}
           >
             <ArrowLeft className="mr-2 h-4 w-4 group-hover:translate-x-[-2px] transition-transform" />
-            RETURN TO SOURCE
+            RETURN TO HOME
           </Button>
         </div>
       </div>
