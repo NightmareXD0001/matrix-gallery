@@ -62,15 +62,6 @@ const ImageViewerDialog: React.FC<ImageViewerDialogProps> = ({
     setRotation(prev => (prev + 90) % 360);
   };
   
-  const handleDownload = () => {
-    const link = document.createElement('a');
-    link.href = image.src;
-    link.download = `${image.title || 'image'}.jpg`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-  
   const handlePrevImage = () => {
     if (currentImageIndex > 0) {
       const newIndex = currentImageIndex - 1;
@@ -220,14 +211,6 @@ const ImageViewerDialog: React.FC<ImageViewerDialogProps> = ({
               onClick={handleRotate}
             >
               <RotateCw size={16} /> Rotate
-            </Button>
-            <Button 
-              variant="outline" 
-              size="sm"
-              className="bg-matrix-black/70 border-matrix-green/40 text-matrix-green hover:bg-matrix-green hover:text-matrix-black"
-              onClick={handleDownload}
-            >
-              <Download size={16} /> Download
             </Button>
           </div>
           
